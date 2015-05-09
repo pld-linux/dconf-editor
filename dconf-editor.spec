@@ -1,12 +1,12 @@
 Summary:	Configuration editor for dconf
 Summary(pl.UTF-8):	Edytor konfiguracji dla dconf
 Name:		dconf-editor
-Version:	3.16.0
+Version:	3.16.1
 Release:	1
 License:	LGPL v2
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/dconf-editor/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	fd0b398d21274b5412c0f0bd3643fab6
+# Source0-md5:	cefbc473bd6773cd3b92f2e5cf793ee8
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11.2
@@ -59,12 +59,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %glib_compile_schemas
-%update_icon_cache HighContrast
 %update_icon_cache hicolor
 
 %postun
 %glib_compile_schemas
-%update_icon_cache HighContrast
 %update_icon_cache hicolor
 
 %files -f dconf.lang
@@ -75,6 +73,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/ca.desrt.dconf-editor.service
 %{_datadir}/glib-2.0/schemas/ca.desrt.dconf-editor.gschema.xml
 %{_desktopdir}/ca.desrt.dconf-editor.desktop
-%{_iconsdir}/HighContrast/*/apps/dconf-editor.png
 %{_iconsdir}/hicolor/*/apps/dconf-editor.png
+%{_iconsdir}/hicolor/scalable/apps/dconf-editor-symbolic.svg
 %{_mandir}/man1/dconf-editor.1*
