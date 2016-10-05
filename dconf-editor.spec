@@ -1,29 +1,31 @@
 Summary:	Configuration editor for dconf
 Summary(pl.UTF-8):	Edytor konfiguracji dla dconf
 Name:		dconf-editor
-Version:	3.18.2
+Version:	3.22.0
 Release:	1
 License:	LGPL v2
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/dconf-editor/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	9292d9b96b0d9f87f6589a7d1d0ca388
+Source0:	https://download.gnome.org/sources/dconf-editor/3.22/%{name}-%{version}.tar.xz
+# Source0-md5:	1735958559546448f4ac9bdae4ab3798
+Patch0:		%{name}-appdata.patch
 URL:		http://www.gnome.org/
+BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11.2
-BuildRequires:	dconf-devel >= 0.24.0
+BuildRequires:	dconf-devel >= 0.26.0
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.40.0
-BuildRequires:	gtk+3-devel >= 3.14.0
+BuildRequires:	glib2-devel >= 1:2.46.0
+BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	intltool >= 0.50.0
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	vala >= 2:0.26.0
+BuildRequires:	vala >= 2:0.33.1
 BuildRequires:	xz
 Requires(post,postun):	glib2 >= 1:2.40.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	dconf >= 0.24.0
-Requires:	glib2 >= 1:2.40.0
-Requires:	gtk+3 >= 3.14.0
+Requires:	dconf >= 0.26.0
+Requires:	glib2 >= 1:2.46.0
+Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,6 +37,7 @@ dconf-editor pozwala na przeglądanie i modyfikowanie bazy dconf.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}
