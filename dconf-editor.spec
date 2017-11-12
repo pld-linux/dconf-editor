@@ -1,21 +1,20 @@
 Summary:	Configuration editor for dconf
 Summary(pl.UTF-8):	Edytor konfiguracji dla dconf
 Name:		dconf-editor
-Version:	3.22.3
+Version:	3.26.2
 Release:	1
 License:	LGPL v2
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/dconf-editor/3.22/%{name}-%{version}.tar.xz
-# Source0-md5:	80f7b39976eb2040bc8ea6635d48a763
+Source0:	https://download.gnome.org/sources/dconf-editor/3.26/%{name}-%{version}.tar.xz
+# Source0-md5:	81e99daa0e2d6283de6e70cd529c331c
 URL:		http://www.gnome.org/
 BuildRequires:	appstream-glib-devel
-BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.11.2
 BuildRequires:	dconf-devel >= 0.26.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.46.0
 BuildRequires:	gtk+3-devel >= 3.22.0
-BuildRequires:	intltool >= 0.50.0
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.33.1
@@ -38,7 +37,7 @@ dconf-editor pozwala na przeglądanie i modyfikowanie bazy dconf.
 %setup -q
 
 %build
-%{__intltoolize}
+%{__gettextize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
