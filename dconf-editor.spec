@@ -1,29 +1,28 @@
 Summary:	Configuration editor for dconf
 Summary(pl.UTF-8):	Edytor konfiguracji dla dconf
 Name:		dconf-editor
-Version:	3.26.2
+Version:	3.28.0
 Release:	1
-License:	LGPL v2
+License:	GPL 3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/dconf-editor/3.26/%{name}-%{version}.tar.xz
-# Source0-md5:	81e99daa0e2d6283de6e70cd529c331c
+Source0:	https://download.gnome.org/sources/dconf-editor/3.28/%{name}-%{version}.tar.xz
+# Source0-md5:	cc9eb8020cc848812972d8519c3d05cf
 URL:		http://www.gnome.org/
 BuildRequires:	appstream-glib-devel
-BuildRequires:	autoconf >= 2.69
-BuildRequires:	automake >= 1:1.11.2
-BuildRequires:	dconf-devel >= 0.26.0
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.46.0
-BuildRequires:	gtk+3-devel >= 3.22.0
+BuildRequires:	glib2-devel >= 1:2.56.0
+BuildRequires:	gtk+3-devel >= 3.22.27
 BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	meson >= 0.41.0
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	vala >= 2:0.33.1
+BuildRequires:	vala >= 2:0.36.11
+BuildRequires:	vala-dconf >= 0.26.1
 BuildRequires:	xz
 Requires(post,postun):	glib2 >= 1:2.40.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	dconf >= 0.26.0
-Requires:	glib2 >= 1:2.46.0
-Requires:	gtk+3 >= 3.22.0
+Requires:	dconf >= 0.26.1
+Requires:	glib2 >= 1:2.56.0
+Requires:	gtk+3 >= 3.22.27
 Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,26 +32,34 @@ dconf-editor allows you to browse and modify dconf database.
 %description -l pl.UTF-8
 dconf-editor pozwala na przeglądanie i modyfikowanie bazy dconf.
 
+%package -n bash-completion-dconf-editor
+Summary:	bash-completion for dconf-editor
+Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla narzędzia dconf-editor
+Group:		Applications/Shells
+Requires:	bash-completion >= 2.0
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
+%description -n bash-completion-dconf-editor
+bash-completion for dconf-editor..
+
+%description -n bash-completion-dconf-editor -l pl.UTF-8
+Bashowe uzupełnianie nazw dla narzędzia dconf-editor.
+
 %prep
 %setup -q
 
 %build
-%{__gettextize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--disable-silent-rules
-%{__make}
+%meson build
+%meson_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%meson_install -C build
 
-%find_lang dconf
+%find_lang dconf-editor
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -65,14 +72,18 @@ rm -rf $RPM_BUILD_ROOT
 %glib_compile_schemas
 %update_icon_cache hicolor
 
-%files -f dconf.lang
+%files -f dconf-editor.lang
 %defattr(644,root,root,755)
 %doc NEWS README
 %attr(755,root,root) %{_bindir}/dconf-editor
-%{_datadir}/appdata/ca.desrt.dconf-editor.appdata.xml
+%{_datadir}/metainfo/ca.desrt.dconf-editor.appdata.xml
 %{_datadir}/dbus-1/services/ca.desrt.dconf-editor.service
 %{_datadir}/glib-2.0/schemas/ca.desrt.dconf-editor.gschema.xml
 %{_desktopdir}/ca.desrt.dconf-editor.desktop
-%{_iconsdir}/hicolor/*/apps/dconf-editor.png
-%{_iconsdir}/hicolor/scalable/apps/dconf-editor-symbolic.svg
+%{_iconsdir}/hicolor/*/apps/ca.desrt.dconf-editor.png
+%{_iconsdir}/hicolor/scalable/apps/ca.desrt.dconf-editor-symbolic.svg
 %{_mandir}/man1/dconf-editor.1*
+
+%files -n bash-completion-dconf-editor
+%defattr(644,root,root,755)
+%{bash_compdir}/dconf-editor
