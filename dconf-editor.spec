@@ -5,22 +5,21 @@ Version:	3.34.1
 Release:	1
 License:	GPL 3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/dconf-editor/3.34/%{name}-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/dconf-editor/3.34/%{name}-%{version}.tar.xz
 # Source0-md5:	dd3b4e5a94b2a7c978f5a09b80db2dd7
 URL:		http://www.gnome.org/
-BuildRequires:	appstream-glib-devel
 BuildRequires:	dconf-devel >= 0.26.1
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.56.0
 BuildRequires:	gtk+3-devel >= 3.22.27
-BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	meson >= 0.41.0
-BuildRequires:	rpmbuild(macros) >= 1.727
+BuildRequires:	ninja >= 1.5
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.40.0
 BuildRequires:	vala-dconf >= 0.26.1
 BuildRequires:	xz
-Requires(post,postun):	glib2 >= 1:2.40.0
+Requires(post,postun):	glib2 >= 1:2.56.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	dconf >= 0.26.1
 Requires:	glib2 >= 1:2.56.0
@@ -38,6 +37,7 @@ dconf-editor pozwala na przeglądanie i modyfikowanie bazy dconf.
 Summary:	bash-completion for dconf-editor
 Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla narzędzia dconf-editor
 Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
 Requires:	bash-completion >= 2.0
 %if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
@@ -54,12 +54,13 @@ Bashowe uzupełnianie nazw dla narzędzia dconf-editor.
 
 %build
 %meson build
-%meson_build -C build
+
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%meson_install -C build
+%ninja_install -C build
 
 %find_lang dconf-editor
 
