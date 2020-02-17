@@ -1,12 +1,12 @@
 Summary:	Configuration editor for dconf
 Summary(pl.UTF-8):	Edytor konfiguracji dla dconf
 Name:		dconf-editor
-Version:	3.34.3
+Version:	3.34.4
 Release:	1
 License:	GPL 3+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/dconf-editor/3.34/%{name}-%{version}.tar.xz
-# Source0-md5:	4a2cf532dee3ab48eae500140450d605
+# Source0-md5:	bb4c53beff260bd80ce82609e61abde4
 URL:		https://wiki.gnome.org/Projects/dconf
 BuildRequires:	dconf-devel >= 0.26.1
 BuildRequires:	gettext-devel
