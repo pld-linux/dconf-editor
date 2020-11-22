@@ -1,12 +1,12 @@
 Summary:	Configuration editor for dconf
 Summary(pl.UTF-8):	Edytor konfiguracji dla dconf
 Name:		dconf-editor
-Version:	3.38.0
+Version:	3.38.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/dconf-editor/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	be67b547250c671b55277d39b3ab0d79
+Source0:	https://download.gnome.org/sources/dconf-editor/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	1e03d07187ef2121d75fadd5f53dc1ef
 URL:		https://wiki.gnome.org/Projects/dconf
 BuildRequires:	dconf-devel >= 0.26.1
 BuildRequires:	gettext-tools
@@ -14,7 +14,7 @@ BuildRequires:	glib2-devel >= 1:2.56.0
 BuildRequires:	gtk+3-devel >= 3.22.27
 BuildRequires:	meson >= 0.41.0
 BuildRequires:	ninja >= 1.5
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.40.0
 BuildRequires:	vala-dconf >= 0.26.1
@@ -39,9 +39,7 @@ Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla narzędzia dconf-editor
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	bash-completion >= 2.0
-%if "%{_rpmversion}" >= "4.6"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description -n bash-completion-dconf-editor
 bash-completion for dconf-editor..
