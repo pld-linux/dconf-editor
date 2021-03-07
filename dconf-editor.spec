@@ -39,7 +39,7 @@ Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla narzędzia dconf-editor
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	bash-completion >= 2.0
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description -n bash-completion-dconf-editor
 bash-completion for dconf-editor..
