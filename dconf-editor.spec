@@ -1,12 +1,12 @@
 Summary:	Configuration editor for dconf
 Summary(pl.UTF-8):	Edytor konfiguracji dla dconf
 Name:		dconf-editor
-Version:	3.38.3
-Release:	2
+Version:	43.0
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/dconf-editor/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	06d64abca0673761cf320145e9977b9c
+Source0:	https://download.gnome.org/sources/dconf-editor/43/%{name}-%{version}.tar.xz
+# Source0-md5:	a85bc794ca3cc920dc6acf63f5ea81bb
 URL:		https://wiki.gnome.org/Projects/dconf
 BuildRequires:	dconf-devel >= 0.26.1
 BuildRequires:	gettext-tools
@@ -39,7 +39,7 @@ Summary:	bash-completion for dconf-editor
 Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla narzędzia dconf-editor
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
-Requires:	bash-completion >= 2.0
+Requires:	bash-completion >= 1:2.0
 BuildArch:	noarch
 
 %description -n bash-completion-dconf-editor
@@ -78,13 +78,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README.md
 %attr(755,root,root) %{_bindir}/dconf-editor
-%{_datadir}/metainfo/ca.desrt.dconf-editor.appdata.xml
 %{_datadir}/dbus-1/services/ca.desrt.dconf-editor.service
 %{_datadir}/glib-2.0/schemas/ca.desrt.dconf-editor.gschema.xml
+%{_datadir}/metainfo/ca.desrt.dconf-editor.appdata.xml
 %{_desktopdir}/ca.desrt.dconf-editor.desktop
-%{_iconsdir}/hicolor/*/apps/ca.desrt.dconf-editor.png
 %{_iconsdir}/hicolor/scalable/actions/ca.desrt.dconf-editor*-symbolic.svg
-%{_iconsdir}/hicolor/scalable/apps/ca.desrt.dconf-editor-symbolic.svg
+%{_iconsdir}/hicolor/scalable/apps/ca.desrt.dconf-editor.svg
+%{_iconsdir}/hicolor/scalable/apps/ca.desrt.dconf-editor.Devel.svg
+%{_iconsdir}/hicolor/symbolic/apps/ca.desrt.dconf-editor-symbolic.svg
 %{_mandir}/man1/dconf-editor.1*
 
 %files -n bash-completion-dconf-editor
