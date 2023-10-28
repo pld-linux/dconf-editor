@@ -1,19 +1,19 @@
 Summary:	Configuration editor for dconf
 Summary(pl.UTF-8):	Edytor konfiguracji dla dconf
 Name:		dconf-editor
-Version:	43.0
+Version:	45.0.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/dconf-editor/43/%{name}-%{version}.tar.xz
-# Source0-md5:	a85bc794ca3cc920dc6acf63f5ea81bb
+Source0:	https://download.gnome.org/sources/dconf-editor/45/%{name}-%{version}.tar.xz
+# Source0-md5:	82b2f5d396e95757ad7eaf89c82decd6
 URL:		https://wiki.gnome.org/Projects/dconf
 BuildRequires:	dconf-devel >= 0.26.1
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.56.0
 BuildRequires:	gtk+3-devel >= 3.22.27
 BuildRequires:	libhandy1-devel >= 1.6
-BuildRequires:	meson >= 0.41.0
+BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.752
