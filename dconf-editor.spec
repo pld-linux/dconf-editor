@@ -24,6 +24,7 @@ BuildRequires:	vala >= 2:0.40.0
 BuildRequires:	vala-dconf >= 0.26.1
 BuildRequires:	vala-libhandy1 >= 1.6
 BuildRequires:	xz
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.56.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	dconf >= 0.26.1
@@ -75,10 +76,12 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %glib_compile_schemas
 %update_icon_cache hicolor
+%update_desktop_database_post
 
 %postun
 %glib_compile_schemas
 %update_icon_cache hicolor
+%update_desktop_database_postun
 
 %files -f dconf-editor.lang
 %defattr(644,root,root,755)
