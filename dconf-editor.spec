@@ -7,6 +7,7 @@ License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/dconf-editor/45/%{name}-%{version}.tar.xz
 # Source0-md5:	82b2f5d396e95757ad7eaf89c82decd6
+Patch0:		no-schema-upate-cache-compile.patch
 URL:		https://wiki.gnome.org/Projects/dconf
 BuildRequires:	dconf-devel >= 0.26.1
 BuildRequires:	gettext-tools
@@ -53,6 +54,7 @@ Bashowe uzupełnianie nazw dla narzędzia dconf-editor.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson build
