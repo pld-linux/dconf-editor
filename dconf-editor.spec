@@ -16,6 +16,7 @@ BuildRequires:	gtk+3-devel >= 3.22.27
 BuildRequires:	libhandy1-devel >= 1.6
 BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
+BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
